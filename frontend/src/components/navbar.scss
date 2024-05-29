@@ -1,0 +1,95 @@
+@import "../responsive.scss";
+nav{
+    display: flex;
+    justify-content:space-between;
+    height:100px;
+    align-items: center;
+a{
+    transition: all 0.4s ease;
+
+    @include sm{
+        display: none;
+    }
+    &:hover{
+        scale:1.05;
+    }
+
+}
+    .left{
+        flex:3;
+        display: flex;
+        align-items: center;
+        gap:50px;
+        .logo{
+            font-weight: bold;
+            font-size: 20px;
+            display: flex;
+            gap:10px;
+            align-items: center;
+            img{
+                width: 30px;
+            }
+            span{
+                @include md{
+                    display: none;
+                }
+                @include sm{
+                    display: initial;
+                }
+            }
+        }
+    }
+    .right{
+        flex:2;
+        background-color: aqua;
+        display: flex;
+        height: 100%;
+        justify-content:flex-end;
+        align-items: center;
+        gap:40px;
+        @include md{
+            background-color: transparent;
+        }
+        a{
+            padding: 12px 24px;
+            margin: 20px;
+        }
+        .su{
+            background-color: yellow;
+        }
+        .menuIcon{
+            display: none;
+            z-index: 99;
+            @include sm{
+                display: initial;
+            }
+            img{
+               width: 36px;
+               height: 36px;
+               cursor: pointer;
+            }
+        }
+        .menu{
+            position: absolute;
+            top: 0;
+            right: -50%;
+            background-color: black;
+            color: azure;
+            height: 100vh;
+            width: 50%;
+            transition: all 1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            &.active{
+                right:0;
+            }
+            @include sm{
+                a{display: initial;}
+            }
+        }
+    }
+  
+}
