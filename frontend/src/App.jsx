@@ -7,6 +7,7 @@ import {
 import Homepage from "./pages/homepage/homepage"
 import Listpage from "./pages/listpage/listpage";
 import Layouts from "./pages/layouts/layouts";
+import Profilepage from "./pages/profilepage/profilepage"
 import Singlepage from "./pages/singlepage/singlepage"
 function App() {
 
@@ -30,7 +31,10 @@ function App() {
           path: "/:id",
           element: <Singlepage/>,
         },
-       
+        { 
+          path: "/profile",
+          element: <Profilepage/>,
+        },
       ]
     }
    
