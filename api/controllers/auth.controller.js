@@ -57,12 +57,13 @@ if(!isPasswordValid)return res.status(401).json({message:"invalid credentials"})
     },process.env.JWT_SECRET_KEY,
 {expiresIn:age});
     
-   
+  const {password: userPassword,...userInfo} =user;
     res.cookie("token",token,{
         httpOnly:true,
+        // true for production mode 
         // secure:true
         maxAge:age,
-    }).status(200).json({message:"Login Successful"})
+    }).status(200).json({userInfo})
 }
 catch(err){
     console.log(err);
