@@ -4,6 +4,7 @@ const authRoute=require("./routes/auth.route");
 const postRoute=require("./routes/post.route");
 const cookieparser =require("cookie-parser");
 const testRoute= require("./routes/test.route")
+const userRoute = require( "./routes/user.route");
 const app= express();
 require('dotenv').config();
 
@@ -17,5 +18,6 @@ app.listen(8800,()=>{
 app.use("/api/posts",postRoute);
 app.use("/api/auth",authRoute);
 app.use("/api/test",testRoute);
+app.use("/api/users", userRoute);
 
 

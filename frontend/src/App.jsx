@@ -12,6 +12,7 @@ import Singlepage from "./pages/singlepage/singlepage"
 import ListPage from "./pages/listpage/listpage";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
+import profileUpdatePage from "./pages/profileUpdatePage/profileUpdatePage";
 
 function App() {
 
@@ -52,6 +53,10 @@ function App() {
         {
           path: "/profile",
           element: <Profilepage />,
+        },
+        {
+          path: "/profile/update",
+          element: <profileUpdatePage/>,
         },
       ]
     }
