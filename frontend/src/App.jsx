@@ -5,15 +5,16 @@ import {
 
  } from "react-router-dom";
 import Homepage from "./pages/homepage/homepage"
-import Listpage from "./pages/listpage/listpage";
+import ListPage from "./pages/listpage/listpage"
 import { Layout,  RequireAuth } from "./pages/layouts/layouts";
-import Profilepage from "./pages/profilepage/profilepage"
-import Singlepage from "./pages/singlepage/singlepage"
-import ListPage from "./pages/listpage/listpage";
+import Profilepage from "./pages/profilepage/profilepage";
+import Singlepage from "./pages/singlepage/singlepage";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
-import profileUpdatePage from "./pages/profileUpdatePage/profileUpdatePage";
-
+import NewPostPage from "./pages/newPostPage/newPostPage";
+import ProfileUpdatePage from "./pages/profileUpdatePage/profileUpdatePage";
+import {singlePageLoader,listPageLoader} from "./lib/loaders";
+import { formToJSON } from "axios";
 function App() {
 
   
@@ -28,11 +29,13 @@ function App() {
         },
         {
           path: "/list",
-          element: <Listpage />,
+          element: <ListPage/>,
+          loader:listPageLoader,
         },
         {
           path: "/:id",
           element: <Singlepage />,
+          loader:singlePageLoader,
         },
 
         {
@@ -43,6 +46,7 @@ function App() {
           path: "/register",
           element: <Register/>,
         },
+       
        
       ],
     },
@@ -56,7 +60,11 @@ function App() {
         },
         {
           path: "/profile/update",
-          element: <profileUpdatePage/>,
+          element: <ProfileUpdatePage/>,
+        },
+        {
+          path: "/add",
+          element: <NewPostPage/>,
         },
       ]
     }
