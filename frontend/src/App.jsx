@@ -13,15 +13,14 @@ import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import NewPostPage from "./pages/newPostPage/newPostPage";
 import ProfileUpdatePage from "./pages/profileUpdatePage/profileUpdatePage";
-import {singlePageLoader,listPageLoader} from "./lib/loaders";
+import {singlePageLoader,listPageLoader, profilePageLoader} from "./lib/loaders";
 import { formToJSON } from "axios";
-function App() {
 
-  
+function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: "/",
@@ -29,13 +28,13 @@ function App() {
         },
         {
           path: "/list",
-          element: <ListPage/>,
-          loader:listPageLoader,
+          element: <ListPage />,
+          loader: listPageLoader,
         },
         {
           path: "/:id",
           element: <Singlepage />,
-          loader:singlePageLoader,
+          loader: singlePageLoader,
         },
 
         {
@@ -44,38 +43,31 @@ function App() {
         },
         {
           path: "/register",
-          element: <Register/>,
+          element: <Register />,
         },
-       
-       
       ],
     },
     {
-      path:"/",
-      element:<RequireAuth/>,
-      children : [
+      path: "/",
+      element: <RequireAuth />,
+      children: [
         {
           path: "/profile",
           element: <Profilepage />,
+          loader: profilePageLoader
         },
         {
           path: "/profile/update",
-          element: <ProfileUpdatePage/>,
+          element: <ProfileUpdatePage />,
         },
         {
           path: "/add",
-          element: <NewPostPage/>,
+          element: <NewPostPage />,
         },
-      ]
-    }
-  
-   
+      ],
+    },
   ]);
-  return (
-  
- 
-<RouterProvider router={router} />
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

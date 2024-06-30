@@ -1,33 +1,32 @@
 import "./singlepage.scss";
 import Slider from "../../components/slider/slider";
-import { singlePostData } from "../../lib/dummydata";
 import Map from "../../components/map/Map";
 import { useNavigate, useLoaderData } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { userData } from "../../lib/dummydata";
-// import { useContext, useState } from "react";
-// import { AuthContext } from "../../context/AuthContext";
-// import apiRequest from "../../lib/apiRequest";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest";
 
 function SinglePage() {
   const post = useLoaderData();
-//   const [saved, setSaved] = useState(post.isSaved);
-//   const { currentUser } = useContext(AuthContext);
-//   const navigate = useNavigate();
+  const [saved, setSaved] = useState(post.isSaved);
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-//   const handleSave = async () => {
-//     if (!currentUser) {
-//       navigate("/login");
-//     }
+  const handleSave = async () => {
+    if (!currentUser) {
+      navigate("/login");
+    }
    
-//     setSaved((prev) => !prev);
-//     try {
-//       await apiRequest.post("/users/save", { postId: post.id });
-//     } catch (err) {
-//       console.log(err);
-//       setSaved((prev) => !prev);
-//     }
-//   };
+    setSaved((prev) => !prev);
+    try {
+      await apiRequest.post("/users/save", { postId: post.id });
+    } catch (err) {
+      console.log(err);
+      setSaved((prev) => !prev);
+    }
+  };
 
 return (
   <div className="singlePage">
