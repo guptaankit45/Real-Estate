@@ -14,7 +14,6 @@ import Register from "./pages/register/register";
 import NewPostPage from "./pages/newPostPage/newPostPage";
 import ProfileUpdatePage from "./pages/profileUpdatePage/profileUpdatePage";
 import {singlePageLoader,listPageLoader, profilePageLoader} from "./lib/loaders";
-import { formToJSON } from "axios";
 
 function App() {
   const router = createBrowserRouter([
@@ -36,7 +35,6 @@ function App() {
           element: <Singlepage />,
           loader: singlePageLoader,
         },
-
         {
           path: "/login",
           element: <Login />,
@@ -54,7 +52,7 @@ function App() {
         {
           path: "/profile",
           element: <Profilepage />,
-          loader: profilePageLoader
+          loader: profilePageLoader,
         },
         {
           path: "/profile/update",
@@ -67,6 +65,7 @@ function App() {
       ],
     },
   ]);
+
   return <RouterProvider router={router} />;
 }
 
